@@ -1,0 +1,32 @@
+<h1>Logic</h1>
+
+<h2>Combining booleans: truth table</h2>
+<table>
+  <thead>
+    <th></th>
+    <% @pairs.each do |pair| %>
+      <th><%= short_name_for pair.first %> <%= short_name_for pair.second %></th>
+    <% end %>
+  </thead>
+  <tbody>
+    <% @results.each do |id, row| %>
+      <tr>
+        <th><%= id %></th>
+        <% row.each do |value| %>
+          <%= render 'cell', value: value %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Combining bits: binary logic</h2>
+<%= render 'binary', label: 'A', binary_sequence: @binary_a %>
+<%= render 'binary', label: 'B', binary_sequence: @binary_b %>
+<%= render 'binary', label: 'and', binary_sequence: @binary_and %>
+<%= render 'binary', label: 'or', binary_sequence: @binary_or %>
+<%= render 'binary', label: 'xor', binary_sequence: @binary_xor %>
+
+<h2>Counting bits: binary numbers</h2>
+<%= render 'binary_number', binary_sequence: @binary_a %>
+<%= render 'binary_number', binary_sequence: @binary_b %>

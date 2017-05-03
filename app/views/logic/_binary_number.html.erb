@@ -1,0 +1,13 @@
+<div>
+  <% count = binary_sequence.length %>
+  <% binary_sequence.each_with_index do |value, index| %>
+    <% if index > 0 %>
+    +
+    <% end %>
+    <strong><%= binary_for value %></strong>
+    &times;
+    <%= 2 ** (count - index - 1) %>
+  <% end %>
+  =
+  <strong><%= number_for_binary_sequence binary_sequence %></strong>
+</div>
