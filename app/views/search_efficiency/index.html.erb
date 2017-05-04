@@ -10,6 +10,7 @@
   Search:
   <%= link_to 'Lemur', search_efficiency_path(step: @step + 1, q: 'Lemur') %>
   <%= link_to 'Salamander', search_efficiency_path(step: @step + 1, q: 'Salamander') %>
+  <%= link_to 'Hippopotamus', search_efficiency_path(step: @step + 1, q: 'Hippopotamus') %>
 <nav>
 
 <h2>Linear Search — searching an array</h2>
@@ -17,9 +18,14 @@
 <ul>
 <% @items.each_with_index do |item, index| %>
   <li>
-    <% found = (item == @query) %>
-    <% class_name = (index < @step ? (found ? 'positive' : 'negative') : nil) %>
-    <%= content_tag (index+1 == @step ? :strong : :span), item, class: class_name %>
+    <% checked = index < @step %>
+    <% found = checked && (item == @query) %>
+    <% current = index+1 == @step %>
+    <% class_name = (checked ? (found ? 'positive' : 'negative') : nil) %>
+    <%= content_tag (current ? :strong : :span), item, class: class_name %>
+    <% if found %>
+      <%= pluralize(index, 'step') %>
+    <% end %>
   </li>
 <% end %>
 </ul>
@@ -46,9 +52,14 @@ end
 
 <% @items_sorted.each_with_index do |item, index| %>
   <li>
-    <% found = (item == @query) %>
-    <% class_name = (binary_search_step_result.include?(index) ? (found ? 'positive' : 'negative') : nil) %>
-    <%= content_tag (binary_search_step_result.last == index ? :strong : :span), item, class: class_name %>
+    <% checked = binary_search_step_result.include?(index) %>
+    <% found = checked && (item == @query) %>
+    <% current = binary_search_step_result.last == index %>
+    <% class_name = (checked ? (found ? 'positive' : 'negative') : nil) %>
+    <%= content_tag (current ? :strong : :span), item, class: class_name %>
+    <% if found %>
+      <%= pluralize(binary_search_step_result.length, 'step') %>
+    <% end %>
   </li>
 <% end %>
 </ul>
