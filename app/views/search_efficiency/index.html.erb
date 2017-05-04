@@ -1,0 +1,53 @@
+<h1>Search Efficiency</h1>
+
+<nav>
+  <%= link_to 'Next', search_efficiency_path(step: @step + 1, q: @query) %>
+  <%= link_to 'Restart', search_efficiency_path(q: @query) %>
+<nav>
+<nav>
+  Search:
+  <%= link_to 'Lemur', search_efficiency_path(step: @step + 1, q: 'Lemur') %>
+<nav>
+
+<h2>Linear Search — searching an array</h2>
+
+<ul>
+<% @items.each_with_index do |item, index| %>
+  <li>
+    <% found = (item == @query) %>
+    <% class_name = (index < @step ? (found ? 'positive' : 'negative') : nil) %>
+    <%= content_tag (index+1 == @step ? :strong : :span), item, class: class_name %>
+  </li>
+<% end %>
+</ul>
+
+<h2>Binary Search — searching a sorted array</h2>
+<ul>
+<%
+low = 0
+high = @items_sorted.length
+binary_search_step_result = []
+@step.times do
+  mid = low + ((high - low) / 2)
+  binary_search_step_result << mid
+  direction = @items_sorted[mid] <=> @query
+  if direction == 0
+    break
+  elsif direction < 0
+    low = mid + 1
+  else # direction > 0
+    high = mid
+  end
+end
+%>
+
+<% @items_sorted.each_with_index do |item, index| %>
+  <li>
+    <% found = (item == @query) %>
+    <% class_name = (binary_search_step_result.include?(index) ? (found ? 'positive' : 'negative') : nil) %>
+    <%= content_tag (binary_search_step_result.last == index ? :strong : :span), item, class: class_name %>
+  </li>
+<% end %>
+</ul>
+
+<h2>Binary Search Tree — searching a sorted tree</h2>
