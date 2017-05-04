@@ -1,0 +1,11 @@
+<% all = items_a.union(result) %>
+
+<ul>
+<% all.sort_by(&:to_i).each do |item| %>
+  <% in_result = result.include?(item) %>
+  <% in_a = items_a.include?(item) %>
+  <% addition = in_result && !in_a %>
+  <% subtract = !in_result && in_a %>
+  <%= content_tag :li, item, class: (subtract ? 'negative suffixed' : addition ? 'positive suffixed' : nil) %>
+<% end %>
+</ul>

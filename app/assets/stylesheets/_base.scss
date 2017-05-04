@@ -44,9 +44,18 @@ td, th {
     padding: 0.333em;
 }
 
+.key {
+    color: $key;
+}
 .positive {
     color: green;
+    &.suffixed:after {
+        content: ' +'
+    }
 }
 .negative {
     color: red;
+    &.suffixed:after {
+        content: ' −'
+    }
 }

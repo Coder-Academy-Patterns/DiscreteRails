@@ -1,0 +1,9 @@
+<% if items.empty? %>
+  <div>Empty, choose a set of numbers above</div>
+<% else %>
+  <ul>
+  <% items.sort_by(&:to_i).each do |item| %>
+    <li><%= item %></li>
+  <% end %>
+  </ul>
+<% end %>
