@@ -1,3 +1,5 @@
+@import 'constants';
+
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +9,8 @@
 html {
     font-size: 20px;
     font-family: sans-serif;
+    background: $base;
+    color: $dark-shade;
 }
 body {
     line-height: 1.3;
@@ -15,6 +19,15 @@ body {
 main {
     max-width: 30em;
     margin: 1rem auto;
+}
+
+a {
+    color: $active;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 h1 {

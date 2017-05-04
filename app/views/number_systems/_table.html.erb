@@ -1,0 +1,14 @@
+<% active_n = local_assigns[:active_n] # Optional %>
+
+<h2><%= title %></h2>
+<article>
+<% rows.each do |row| %>
+  <div>
+  <% row.each do |item| %>
+    <%= content_tag (item[:n] == active_n ? :strong : :span) do %>
+      <%= link_to item[:text], number_systems_path(n: item[:n]) %>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>
+</article>
