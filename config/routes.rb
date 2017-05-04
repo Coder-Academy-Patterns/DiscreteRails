@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'landing#index'
+
   get 'logic' => 'logic#index'
   get 'number_systems' => 'number_systems#index'
 
