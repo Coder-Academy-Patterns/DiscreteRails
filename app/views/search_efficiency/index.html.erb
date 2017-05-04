@@ -1,12 +1,15 @@
 <h1>Search Efficiency</h1>
 
 <nav>
+  <strong>“<%= @query %>”</strong>
+  <%= @step %>
   <%= link_to 'Next', search_efficiency_path(step: @step + 1, q: @query) %>
   <%= link_to 'Restart', search_efficiency_path(q: @query) %>
 <nav>
 <nav>
   Search:
   <%= link_to 'Lemur', search_efficiency_path(step: @step + 1, q: 'Lemur') %>
+  <%= link_to 'Salamander', search_efficiency_path(step: @step + 1, q: 'Salamander') %>
 <nav>
 
 <h2>Linear Search — searching an array</h2>
