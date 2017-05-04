@@ -1,0 +1,56 @@
+<h1>Hashing</h1>
+
+<h2>Items</h2>
+<ol>
+<% @items.each do |item| %>
+  <li><%= item %></li>
+<% end %>
+</ol>
+
+<h2>First character hash (first character as ascii)</h2>
+<ol>
+<% @items_first_char_hashed.each do |hash| %>
+  <li><%= hash %></li>
+<% end %>
+</ol>
+<%= render 'grouped_hashes_table', grouped_hashes: @items.group_by(&:first_char_hash) %>
+<p><em>Note that words starting with the same letter clash. Not very effective!</em></p>
+
+<h2>Length hash (length of string)</h2>
+<ol>
+<% @items_length_hashed.each do |hash| %>
+  <li><%= hash %></li>
+<% end %>
+</ol>
+<%= render 'grouped_hashes_table', grouped_hashes: @items.group_by(&:length) %>
+<p><em>Now strings with the same length clash. Still not very effective!</em></p>
+
+<h2>XOR hash (each character XORed together)</h2>
+<ol>
+<% @items_xor_hashed.each do |hash| %>
+  <li><%= hash %></li>
+<% end %>
+</ol>
+<%= render 'grouped_hashes_table', grouped_hashes: @items.group_by(&:xor_hash) %>
+<p><em>This is much more effective. We have a edge case with anagrams, as the same letters out of order will XOR to the same value.</em></p>
+
+<h2>DJB2 hash (<%= link_to 'source', 'http://stackoverflow.com/a/7666577' %>)</h2>
+<ol>
+<% @items_djb2_hashed.each do |hash| %>
+  <li><%= hash %></li>
+<% end %>
+</ol>
+<%= render 'grouped_hashes_table', grouped_hashes: @items.group_by(&:djb2_hash) %>
+<p><em>This is a bit more complicated, but you can see that the hash is much more unique.</em></p>
+
+<h2>Set</h2>
+<p>A set stores an unordered collection of items. Each item is hashed. This hash can be used to efficiently determine whether items are unique — if their hashes differ they can’t have the same value.</p>
+
+<h2>Hash table (aka dictionary)</h2>
+<p>A hash table stores pairs of items, one a key, and one a value. The key must be unique, and is hashed, similar to a Set. The difference is a separate value is stored alongside. The value itself is not hashed, only the key.</p>
+<%= link_to 'How does a hash table work?', 'http://stackoverflow.com/a/730813' %>
+
+<%= form_with(url: hashing_path, method: :get) do |f| %>
+  <%= f.label :capacity %>
+  <%= f.text_field :capacity, value: @capacity %>
+<% end %>

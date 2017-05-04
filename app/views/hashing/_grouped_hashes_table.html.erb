@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Hash</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% grouped_hashes.each do |hash, values| %>
+      <tr>
+        <td><%= hash %></td>
+        <td><%= values.join(', ') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
