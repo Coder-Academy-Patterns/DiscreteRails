@@ -32,6 +32,8 @@ WORKDIR /usr/src/app
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler && bundle install --jobs 20 --retry 5 --without development test
 
+# Copy dependencies for Node.js and instance the packages.
+# Again, being separate means this will cache.
 COPY package.json yarn.lock ./
 RUN yarn install
 RUN npm rebuild node-sass --force
@@ -42,15 +44,17 @@ ENV RACK_ENV production
 ENV RAILS_ROOT /usr/src/app
 # Use Rails for static files in public
 ENV RAILS_SERVE_STATIC_FILES 1
+# You must pass environment variable SECRET_KEY_BASE
 ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE $SECRET_KEY_BASE
 
 # Copy the main application.
 COPY . ./
 
-# Precompile Rails assets
+# Precompile Rails assets (plus Webpack)
 RUN bundle exec rake assets:precompile
 
+# Will run on port 3000 by default
 EXPOSE 3000
 # Start puma
 CMD bundle exec puma -C config/puma.rb
