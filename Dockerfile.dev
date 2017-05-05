@@ -1,0 +1,22 @@
+# Starting in development
+# docker build .
+# docker run -ti -d --name rocker -p 3000:3000 -v $(pwd):/usr/src/app IMAGE_ID
+
+FROM ruby:2.4
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - \
+    && apt-get install -y nodejs \
+    && apt-get install -y build-essential
+
+WORKDIR /usr/src/app
+COPY Gemfile* ./
+RUN bundle install
+COPY . .
+
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]
