@@ -1,13 +1,15 @@
 <h1>Search Efficiency</h1>
 
+<% if @query.present? %>
+  <nav>
+    <strong>“<%= @query %>”</strong>
+    <%= @step %>
+    <%= link_to 'Next', search_efficiency_path(step: @step + 1, q: @query) %>
+    <%= link_to 'Restart', search_efficiency_path(q: @query) %>
+  <nav>
+<% end %>
 <nav>
-  <strong>“<%= @query %>”</strong>
-  <%= @step %>
-  <%= link_to 'Next', search_efficiency_path(step: @step + 1, q: @query) %>
-  <%= link_to 'Restart', search_efficiency_path(q: @query) %>
-<nav>
-<nav>
-  Search:
+  Search for:
   <%= link_to 'Lemur', search_efficiency_path(q: 'Lemur') %>
   <%= link_to 'Salamander', search_efficiency_path(q: 'Salamander') %>
   <%= link_to 'Hippopotamus', search_efficiency_path(q: 'Hippopotamus') %>
