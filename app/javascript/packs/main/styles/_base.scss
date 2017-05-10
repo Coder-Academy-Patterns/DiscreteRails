@@ -21,6 +21,14 @@ main {
     margin: 1rem auto;
 }
 
+nav.primary {
+    text-align: center;
+    
+    a {
+        display: block;
+    }
+}
+
 a {
     color: $active;
     text-decoration: none;
