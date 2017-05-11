@@ -1,0 +1,12 @@
+.tree {
+    text-align: center;
+
+    &--branches {
+        display: flex;
+
+        > details {
+            flex-grow: 1;
+            margin: 0 2px;
+        }
+    }
+}

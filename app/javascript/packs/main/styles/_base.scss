@@ -55,6 +55,17 @@ td, th {
     padding: 0.333em;
 }
 
+summary {
+    border: 1px solid $active;
+    border-radius: 5px;
+    -webkit-user-select: none;
+}
+summary:focus {
+    color: $base;
+    background: $active;
+    outline: none;
+}
+
 .key {
     color: $key;
 }

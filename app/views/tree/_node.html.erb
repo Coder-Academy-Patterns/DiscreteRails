@@ -1,0 +1,19 @@
+<div class="tree">
+  <h3 style="text-align: center"><%= node.value %></h3>
+
+  <div class="tree--branches">
+    <% if node.left.present? %>
+        <details>
+          <summary>L</summary>
+          <%= render 'node', node: node.left %>
+        </details>
+    <% end %>
+
+    <% if node.right.present? %>
+      <details>
+        <summary>R</summary>
+        <%= render 'node', node: node.right %>
+      </details>
+    <% end %>
+  </div>
+</div>
