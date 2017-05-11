@@ -12,46 +12,50 @@
 
 <%= render 'number_set', items: @items %>
 
-<h2>Union</h2>
+<% unless @items.empty? %>
 
-<h3>With even numbers</h3>
-<%= render 'union', items_a: @items, items_b: @even_numbers %>
+  <h2>Union</h2>
 
-<h3>With odd numbers</h3>
-<%= render 'union', items_a: @items, items_b: @odd_numbers %>
+  <h3>With even numbers</h3>
+  <%= render 'union', items_a: @items, items_b: @even_numbers %>
 
-<h3>With first 10 numbers</h3>
-<%= render 'union', items_a: @items, items_b: @first_10_numbers %>
+  <h3>With odd numbers</h3>
+  <%= render 'union', items_a: @items, items_b: @odd_numbers %>
 
-<h3>With prime numbers</h3>
-<%= render 'union', items_a: @items, items_b: @prime_numbers %>
+  <h3>With first 10 numbers</h3>
+  <%= render 'union', items_a: @items, items_b: @first_10_numbers %>
 
-
-<h2>Difference</h2>
-
-<h3>Remove even numbers</h3>
-<%= render 'difference', items_a: @items, items_b: @even_numbers %>
-
-<h3>Remove odd numbers</h3>
-<%= render 'difference', items_a: @items, items_b: @odd_numbers %>
-
-<h3>Remove numbers 1 through 10</h3>
-<%= render 'difference', items_a: @items, items_b: @first_10_numbers %>
-
-<h3>Remove prime numbers</h3>
-<%= render 'difference', items_a: @items, items_b: @prime_numbers %>
+  <h3>With prime numbers</h3>
+  <%= render 'union', items_a: @items, items_b: @prime_numbers %>
 
 
-<h2>Intersection</h2>
+  <h2>Difference</h2>
 
-<h3>Intersect even numbers</h3>
-<%= render 'intersection', items_a: @items, items_b: @even_numbers %>
+  <h3>Remove even numbers</h3>
+  <%= render 'difference', items_a: @items, items_b: @even_numbers %>
 
-<h3>Intersect odd numbers</h3>
-<%= render 'intersection', items_a: @items, items_b: @odd_numbers %>
+  <h3>Remove odd numbers</h3>
+  <%= render 'difference', items_a: @items, items_b: @odd_numbers %>
 
-<h3>Intersect numbers 1 through 10</h3>
-<%= render 'intersection', items_a: @items, items_b: @first_10_numbers %>
+  <h3>Remove numbers 1 through 10</h3>
+  <%= render 'difference', items_a: @items, items_b: @first_10_numbers %>
 
-<h3>Intersect prime numbers</h3>
-<%= render 'intersection', items_a: @items, items_b: @prime_numbers %>
+  <h3>Remove prime numbers</h3>
+  <%= render 'difference', items_a: @items, items_b: @prime_numbers %>
+
+
+  <h2>Intersection</h2>
+
+  <h3>Intersect even numbers</h3>
+  <%= render 'intersection', items_a: @items, items_b: @even_numbers %>
+
+  <h3>Intersect odd numbers</h3>
+  <%= render 'intersection', items_a: @items, items_b: @odd_numbers %>
+
+  <h3>Intersect numbers 1 through 10</h3>
+  <%= render 'intersection', items_a: @items, items_b: @first_10_numbers %>
+
+  <h3>Intersect prime numbers</h3>
+  <%= render 'intersection', items_a: @items, items_b: @prime_numbers %>
+
+<% end %>
