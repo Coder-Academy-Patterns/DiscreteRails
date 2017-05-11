@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'sets' => 'sets#index'
   get 'hashing' => 'hashing#index'
   get 'tree' => 'tree#index'
+  get 'probability' => 'probability#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

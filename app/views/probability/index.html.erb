@@ -1,0 +1,18 @@
+<h1>Probability</h1>
+
+<nav>
+<%= link_to 'Reset' %>
+</nav>
+
+<ol>
+<% @sets.count.times do |index| %>
+  <%= render 'step', index: index, sets: @sets, probabilities: @probabilities %>
+<% end %>
+</ol>
+
+<h2>
+  Probability:
+  <%= @probabilities.map(&:to_s).join(' ✕ ') %>
+  =
+  <%= @total_probability %>
+</h2>

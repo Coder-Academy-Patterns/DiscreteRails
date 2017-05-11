@@ -1,0 +1,14 @@
+<% set = sets[index] %>
+
+<li class="text-center">
+  <div class="row">
+    <% 6.times do |n| %>
+      <% id = "#{ n + 1 }" %>
+      <h3 class="dice">
+        <%#= link_to id, { q: id }, { class: (set && set.include?(id)) ? 'positive' : 'negative' } %>
+        <%= link_toggling_in_step id: id, step_index: index, sets: sets %>
+      </h3>
+    <% end %>
+    <h3><%= probabilities[index] || 0 %></h3>
+  </div>
+</li>

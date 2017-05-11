@@ -66,6 +66,17 @@ summary:focus {
     outline: none;
 }
 
+.row {
+    display: flex;
+}
+.row > * {
+    flex-grow: 1;
+}
+
+.text-center {
+    text-align: center;
+}
+
 .key {
     color: $key;
 }

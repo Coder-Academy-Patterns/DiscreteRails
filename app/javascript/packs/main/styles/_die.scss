@@ -1,0 +1,11 @@
+.dice {
+    font-size: 2rem;
+    line-height: 2;
+    padding: 0 0.25rem;
+
+    a {
+        display: block;
+        border: 1px solid $dark-shade;
+        border-radius: 5px;
+    }
+}
