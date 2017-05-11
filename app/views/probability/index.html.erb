@@ -11,8 +11,25 @@
 </ol>
 
 <h2>
-  Probability:
+  Total probability:
   <%= @probabilities.map(&:to_s).join(' ✕ ') %>
   =
   <%= @total_probability %>
 </h2>
+
+<% @possibilities.each do |possibility| %>
+  <%
+    positive = true
+    possibility.each_with_index do |n, i|
+      unless @sets[i].include?(n.to_s)
+        positive = false
+        break
+      end
+    end
+  %>
+  {
+  <% possibility.each do |n| %>
+    <small class="small-dice <%= positive ? 'positive' : 'negative' %>"><%= n %></small>
+  <% end %>
+  },
+<% end %>
