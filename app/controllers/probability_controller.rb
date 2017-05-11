@@ -9,7 +9,7 @@ class ProbabilityController < ApplicationController
     @probabilities = @sets.map{ |set| Rational(set.count, 6) }
     @total_probability = @probabilities.reduce(&:*) #Rational(1, 12)
 
-    @possibilities = (1..6).to_a.repeated_permutation(2)
+    @possibilities = (1..6).to_a.repeated_permutation(@sets.count)
 
     # Always show one row
     @sets << Set.new if @sets.empty?
