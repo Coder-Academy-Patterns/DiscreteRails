@@ -20,6 +20,13 @@
   </tbody>
 </table>
 
+<p>
+  <span class="negative">not</span>(<strong>a</strong> or <strong>b</strong>) = (<span class="negative">not</span> <strong>a</strong>) and (<span class="negative">not</span> <strong>b</strong>)
+</p>
+<p>
+  <span class="negative">not</span>(<strong>a</strong> and <strong>b</strong>) = (<span class="negative">not</span> <strong>a</strong>) or (<span class="negative">not</span> <strong>b</strong>)
+</p>
+
 <h2>Combining bits: binary logic</h2>
 <%= render 'binary', label: 'A', binary_sequence: @binary_a %>
 <%= render 'binary', label: 'B', binary_sequence: @binary_b %>

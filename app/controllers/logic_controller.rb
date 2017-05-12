@@ -13,7 +13,7 @@ class LogicController < ApplicationController
   end
   
   def index
-    @pairs = [[true, true], [true, false], [false, false]]
+    @pairs = [[true, true], [true, false], [false, true], [false, false]]
     @results = {}
     OPERATORS.each do |operator|
       @results[operator] = @pairs.map do |pair|
