@@ -44,8 +44,8 @@
 <p><em>This more complex hash function is more effective, as it reduces clashing between items.</em></p>
 
 <h2>Set</h2>
-<p>A set stores an unordered collection of items. Each item is hashed. This hash can be used to efficiently determine whether items are unique — if their hashes differ they can’t have the same value.</p>
+<p>A set stores an unordered collection of items. Each item is hashed. This hash can be used to efficiently determine whether items are unique — if two items’ hashes differ then they must not have the same value.</p>
 
 <h2>Hash table (aka dictionary)</h2>
-<p>A hash table stores pairs of items, one a key, and one a value. The key must be unique, and is hashed, similar to a Set. The difference is a separate value is stored alongside. The value itself is not hashed, only the key.</p>
+<p>A hash table stores pairs of items, one a key, and one a value. The key must be unique, and is hashed, similar to a Set. The difference is an additional value is stored alongside. The value itself is not hashed, only the key.</p>
 <%= link_to 'How does a hash table work?', 'http://stackoverflow.com/a/730813' %>
