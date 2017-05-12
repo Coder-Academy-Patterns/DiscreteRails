@@ -10,7 +10,7 @@ FROM ruby:2.4-alpine
 ENV PATH /root/.yarn/bin:$PATH
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh build-base nodejs tzdata
+    apk add --no-cache bash git openssh build-base nodejs tzdata python
 
 RUN apk update \
   && apk add curl bash binutils tar gnupg \
