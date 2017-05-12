@@ -6,7 +6,7 @@
   <div>
   <% row.each do |item| %>
     <%= content_tag (item[:n] == active_n ? :strong : :span) do %>
-      <%= link_to item[:text], number_systems_path(n: item[:n]) %>
+      <code><%= link_to item[:text], number_systems_path(n: item[:n]) %></code>
     <% end %>
   <% end %>
   </div>
