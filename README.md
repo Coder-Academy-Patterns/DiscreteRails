@@ -23,6 +23,9 @@ rails s
 
 ## Deployment
 
+### Now
 ```
 now --docker -e SECRET_KEY_BASE=$(rails secret)
 ```
+
+### [Google Cloud / Bitname](https://docs.bitnami.com/google/infrastructure/ruby/#access_application)
