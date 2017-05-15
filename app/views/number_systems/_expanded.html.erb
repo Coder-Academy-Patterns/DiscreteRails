@@ -1,0 +1,3 @@
+<%= NumberSystems.n_to_base(n: n, base: base).chars.reverse.map.with_index do |bit, offset| %>
+  <% "<strong>#{ bit }</strong> ✕ #{ base }<sup>#{ offset }</sup>" %>
+<% end.reverse.join(' + ').html_safe %>
