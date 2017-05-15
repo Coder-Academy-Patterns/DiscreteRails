@@ -77,5 +77,16 @@ Bumble bee
         node = nil
       end
     end
+
+    @hash_size = 31
+    @items_hash_array = Array.new(@hash_size) { [] }
+    ITEMS_ARRAY.each do |item|
+      hash_value = item.djb2_hash 
+      @items_hash_array[hash_value % @hash_size] << item
+    end
+
+    if @step >= 1
+      @items_hash_found_offset = @query.djb2_hash % @hash_size
+    end
   end
 end

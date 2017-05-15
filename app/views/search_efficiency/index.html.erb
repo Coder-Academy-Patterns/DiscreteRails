@@ -18,23 +18,10 @@
 
 <h2>Linear Search — searching an array</h2>
 
-<ul>
-<% @items.each_with_index do |item, index| %>
-  <li>
-    <% checked = index < @step %>
-    <% found = checked && (item == @query) %>
-    <% current = index+1 == @step %>
-    <% class_name = (checked ? (found ? 'positive' : 'negative') : nil) %>
-    <%= content_tag (current ? :strong : :span), item, class: class_name %>
-    <% if found %>
-      <%= pluralize(index, 'step') %>
-    <% end %>
-  </li>
-<% end %>
-</ul>
+<%= render 'linear', items: @items, step: @step, query: @query, extra: 0 %>
 
 <h2>Binary Search — searching a sorted array</h2>
-<ul>
+<ol>
 <% @items_sorted.each_with_index do |item, index| %>
   <li>
     <% checked = @binary_search_step_result.include?(index) %>
@@ -47,8 +34,20 @@
     <% end %>
   </li>
 <% end %>
-</ul>
+</ol>
 
 <h2>Binary Search Tree — searching a balanced tree</h2>
 
 <%= render 'tree/node', node: @b.root, search_steps: @binary_tree_search_steps %>
+
+<h2>Hashed values — searching a Hash/Dictionary</h2>
+
+<ol>
+<% @items_hash_array.each_with_index do |values, hash_offset| %>
+  <% found_bucket = hash_offset == @items_hash_found_offset %>
+  <% class_name = (found_bucket ? 'positive' : nil) %>
+  <%= content_tag :li, class: class_name do %>
+    <%= render 'linear', items: values, step: found_bucket ? @step - 1 : 0, extra: 1, query: @query %>
+  <% end %>
+<% end %>
+</ol>
