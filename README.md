@@ -32,7 +32,7 @@ now --docker -e SECRET_KEY_BASE=$(rails secret)
 
 #### [Instructions](https://docs.bitnami.com/google/infrastructure/ruby/#access_application)
 
-#### Clone project from Git
+#### Clone project from GitHub
 ```
 cd /opt/bitnami
 git clone https://github.com/coder-factory-academy/DiscreteRails.git
@@ -78,5 +78,13 @@ sudo NODE_ENV=production RAILS_ENV=production bundle exec rails webpacker:compil
 #### Restart Nginx
 
 ```
+sudo /opt/bitnami/ctlscript.sh restart nginx
+```
+
+#### Pull changes from GitHub
+```
+cd /opt/bitnami/DiscreteRails
+sudo git pull
+sudo NODE_ENV=production RAILS_ENV=production bundle exec rails assets:precompile
 sudo /opt/bitnami/ctlscript.sh restart nginx
 ```
