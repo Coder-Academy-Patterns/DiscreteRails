@@ -24,7 +24,7 @@ Bumble bee
 
   def index
     @query = params.fetch(:q, '')
-    @step = params.fetch(:step, '1').to_i
+    @step = @query.present? ? params.fetch(:step, '0').to_i : 0
     @items = ITEMS_ARRAY
     @items_sorted = ITEMS_ARRAY.sort
 
