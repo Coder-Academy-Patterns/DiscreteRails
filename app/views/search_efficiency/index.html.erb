@@ -13,6 +13,7 @@
   <%= link_to 'Lemur', search_efficiency_path(q: 'Lemur') %>
   <%= link_to 'Salamander', search_efficiency_path(q: 'Salamander') %>
   <%= link_to 'Hippopotamus', search_efficiency_path(q: 'Hippopotamus') %>
+  <%= link_to 'Goat', search_efficiency_path(q: 'Goat') %>
 <nav>
 
 <h2>Linear Search — searching an array</h2>
@@ -34,36 +35,20 @@
 
 <h2>Binary Search — searching a sorted array</h2>
 <ul>
-<%
-low = 0
-high = @items_sorted.length
-binary_search_step_result = []
-@step.times do
-  mid = low + ((high - low) / 2)
-  binary_search_step_result << mid
-  direction = @items_sorted[mid] <=> @query
-  if direction == 0
-    break
-  elsif direction < 0
-    low = mid + 1
-  else # direction > 0
-    high = mid
-  end
-end
-%>
-
 <% @items_sorted.each_with_index do |item, index| %>
   <li>
-    <% checked = binary_search_step_result.include?(index) %>
+    <% checked = @binary_search_step_result.include?(index) %>
     <% found = checked && (item == @query) %>
-    <% current = binary_search_step_result.last == index %>
+    <% current = @binary_search_step_result.last == index %>
     <% class_name = (checked ? (found ? 'positive' : 'negative') : nil) %>
     <%= content_tag (current ? :strong : :span), item, class: class_name %>
     <% if found %>
-      <%= pluralize(binary_search_step_result.length, 'step') %>
+      <%= pluralize(@binary_search_step_result.length, 'step') %>
     <% end %>
   </li>
 <% end %>
 </ul>
 
-<h2>Binary Search Tree — searching a sorted tree</h2>
+<h2>Binary Search Tree — searching a balanced tree</h2>
+
+<%= render 'tree/node', node: @b.root, search_steps: @binary_tree_search_steps %>
