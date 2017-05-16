@@ -1,3 +1,5 @@
+require_relative './concerns/string_hashing'
+
 class HashingController < ApplicationController
   ITEMS = %w(apple apricot banana cherry lump peach pear plum)
 
