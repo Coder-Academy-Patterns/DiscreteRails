@@ -1,6 +1,10 @@
 module NumberSystems
   BITS_DISPLAY = ['0', '1']
   BASE_DISPLAY = ('0'..'9').to_a + ('A'..'F').to_a
+  BASE_TO_N = BASE_DISPLAY.map.with_index{ |base_n, n| [base_n, n] }.reduce({}) do |hash, pair|
+    hash[pair[0]] = pair[1]
+    hash
+  end
 
   def NumberSystems.n_to_bit(n, leading_zeros = 4)
     output = ''
@@ -20,6 +24,10 @@ module NumberSystems
       n /= base
     end
     output.rjust(min_length, '0')
+  end
+
+  def NumberSystems.base_to_n(n_string:, base:)
+    n_string.chars.reverse.map.with_index{ |c, offset| BASE_TO_N[c] * base ** offset }.reduce(:+)
   end
 
   def NumberSystems.create_table(base: 2, row_count: 16, min_length: 4)
