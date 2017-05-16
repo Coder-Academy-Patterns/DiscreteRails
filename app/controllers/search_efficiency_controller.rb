@@ -1,3 +1,5 @@
+require_relative './concerns/string_hashing'
+
 class SearchEfficiencyController < ApplicationController
   ITEMS_ARRAY = %Q(
 Deer
