@@ -1,0 +1,27 @@
+{
+    "builders": [
+        {
+            "type": "docker",
+            "image": "guzart/rails-app:020407070021",
+            "commit": true,
+            "changes": [
+                "WORKDIR /usr/src/app",
+                "COPY Gemfile Gemfile.lock ./",
+                "RUN gem install bundler && bundle install --jobs 20 --retry 5 --without development test",
+                "COPY package.json yarn.lock ./",
+                "RUN /root/.yarn/bin/yarn install",
+                "RUN npm rebuild node-sass --force",
+                "ENV RAILS_ENV production",
+                "ENV RACK_ENV production",
+                "ENV RAILS_ROOT /usr/src/app",
+                "ENV RAILS_SERVE_STATIC_FILES 1",
+                "ARG SECRET_KEY_BASE",
+                "ENV SECRET_KEY_BASE $SECRET_KEY_BASE",
+                "COPY . ./",
+                "RUN bundle exec rake assets:precompile",
+                "EXPOSE 3000",
+                "CMD bundle exec puma -C config/puma.rb"
+            ]
+        }
+    ]
+}
