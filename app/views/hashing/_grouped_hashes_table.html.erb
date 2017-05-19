@@ -6,7 +6,7 @@
     </tr>
   </thead>
   <tbody>
-    <% grouped_hashes.each do |hash, values| %>
+    <% grouped_hashes.sort.each do |hash, values| %>
       <tr>
         <td><%= hash %></td>
         <td><%= values.join(', ') %></td>

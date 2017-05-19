@@ -43,6 +43,15 @@
 <%= render 'grouped_hashes_table', grouped_hashes: @items.group_by(&:djb2_hash) %>
 <p><em>This more complex hash function is more effective, as it reduces clashing between items.</em></p>
 
+<h2>SHA256 digest (<%= link_to 'about', 'https://en.wikipedia.org/wiki/SHA-2' %>)</h2>
+<ol>
+<% @items_sha256.each do |hash| %>
+  <li><%= hash.to_s %></li>
+<% end %>
+</ol>
+<%#= render('grouped_hashes_table', grouped_hashes: @items.group_by(&:sha256_digest)) %>
+<p><em>This is a hash so effective that no two values will ever share the same SHA256 digest. However, creating one is much more computationally expensive.</em></p>
+
 <h2>Set</h2>
 <p>A set stores an unordered collection of items. Each item is hashed. This hash can be used to efficiently determine whether items are unique — if two items’ hashes differ then they must not have the same value.</p>
 

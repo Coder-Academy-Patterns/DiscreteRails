@@ -9,6 +9,6 @@ class HashingController < ApplicationController
     @items_length_hashed = ITEMS.map(&:length)
     @items_xor_hashed = ITEMS.map(&:xor_hash)
     @items_djb2_hashed = ITEMS.map(&:djb2_hash)
-    @capacity = 4
+    @items_sha256 = ITEMS.map(&:sha256_digest)
   end
 end
